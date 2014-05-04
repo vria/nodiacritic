@@ -1,5 +1,5 @@
 <?php
-namespace Vlad\DefaultBundle\Twig;
+namespace VladRia\Twig\Extention;
 
 use Symfony\Component\HttpFoundation\Request;
 
