@@ -1,0 +1,26 @@
+{
+    "name": "vladria/nodiacritic",
+    "type": "twig/extensions",
+    "description": "",
+    "keywords": ["text", "diacritic", "process"],
+    "homepage": "",
+    "license": "MIT",
+
+    "authors": [
+        {
+            "name": "Riabchenko Vlad",
+            "email": "Riabchenko.Vlad@gmail.com"
+        },
+    ],
+
+    "require": {
+        "php": ">=5.3.0",
+        "twig/twig": ">=1.2"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "VladRia\\Twig\\Extention": ""
+        }
+    },
+}
