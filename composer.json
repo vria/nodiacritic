@@ -12,7 +12,7 @@
             "email": "Riabchenko.Vlad@gmail.com",
 			"role": "Developer",
 			"homepage": "https://www.linkedin.com/pub/vladyslav-riabchenko/49/a95/97b"
-        },
+        }
     ],
 	
 	"support": {
@@ -27,7 +27,7 @@
 
     "autoload": {
         "psr-4": {
-            "VladRia\\Twig\\Extention": "src"
+            "VladRia\\Twig\\Extention\\": "src"
         }
     }
 }
