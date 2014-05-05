@@ -1,15 +1,14 @@
 #nodiacritic
-
-Twig extention. Removes all diacritic signs from string. 
+---
+Twig extention. Removes all diacritical signs from string such as accents.
 ---
 ##Installation
 
 composer.json
 ```yml
-    "require": {
-        "vladria/nodiacritic": "dev-master"
-    },
-}
+"require": {
+    "vladria/nodiacritic": "dev-master"
+},
 ```
 
 services.yml
