@@ -1,6 +1,6 @@
 #nodiacritic
 
-###Twig extention. Removes all diacritical signs from string such as accents. It even treats specific german and danmark characters in expected way. 
+Twig extention. Removes all diacritical signs from string such as accents. It even treats specific german and danmark characters in expected way. 
 
 ---
 ##Installation
