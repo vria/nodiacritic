@@ -6,6 +6,7 @@ Twig extention. Removes all diacritic signs from string.
 
 composer.json
 ```yml
+{
     "repositories": [{
         "type": "package",
         "package": {
@@ -27,6 +28,7 @@ composer.json
     "require": {
         "vladria/nodiacritic": "dev-master"
     },
+}
 ```
 
 services.yml
