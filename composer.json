@@ -1,6 +1,6 @@
 {
     "name": "vladria/nodiacritic",
-    "type": "twig/extensions",
+    "type": "package",
     "description": "Twig extention used in Symfony2 for eliminating diacritical signs such as accents",
     "keywords": ["twig", "filter", "string", "text", "diacritical", "accent"],
     "homepage": "https://github.com/riabchenkovlad/nodiacritic",
