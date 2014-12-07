@@ -1,5 +1,7 @@
 #nodiacritic
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/a4b5fc34-3340-49f6-b593-ea9737c2ea82/mini.png)](https://insight.sensiolabs.com/projects/a4b5fc34-3340-49f6-b593-ea9737c2ea82)
+
 Twig extention. Removes all diacritical signs from string such as accents. It even treats specific german and danmark characters in expected way. 
 
 ##Installation

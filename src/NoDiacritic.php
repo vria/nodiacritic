@@ -200,9 +200,6 @@ class NoDiacritic extends \Twig_Extension
         chr(199).chr(155) => 'U', chr(199).chr(156) => 'u',
         );
 
-        // Used for locale-specific rules
-        $locale = "";//get_locale();
-
         if ( 'de' == $this->request->getLocale() ) {
             $chars[ chr(195).chr(132) ] = 'Ae';
             $chars[ chr(195).chr(164) ] = 'ae';
