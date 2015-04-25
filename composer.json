@@ -27,7 +27,7 @@
 
     "autoload": {
         "psr-4": {
-            "VladRia\\Twig\\Extention\\": "src"
+            "VladRia\\Utils\\": "src/utils"
         }
     }
 }
