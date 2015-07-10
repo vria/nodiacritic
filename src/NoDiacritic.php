@@ -16,7 +16,7 @@ class NoDiacritic
         }
     }
 
-    public function noDiacriticFilter($string)
+    public function filter($string)
     {
         $chars = array(
             // Decompositions for Latin-1 Supplement
