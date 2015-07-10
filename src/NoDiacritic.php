@@ -2,30 +2,21 @@
 
 namespace VladRia\Utils;
 
-use Symfony\Component\HttpFoundation\Request;
-
-class NoDiacritic extends \Twig_Extension
+class NoDiacritic
 {
     /**
-     * @var Request
+     * @var Symfony\Component\HttpFoundation\Request
      */
-    protected $request;
+    protected $request = null;
 
-    public function __construct($container)
+    public function __construct($container = null)
     {
-        if ($container->isScopeActive('request')) {
+        if (get_class($container) == "" && $container->isScopeActive('request')) {
             $this->request = $container->get('request');
         }
     }
 
-    public function getFilters()
-    {
-        return array(
-            new \Twig_SimpleFilter('nodiacritic', array($this, 'nodiacriticFilter')),
-        );
-    }
-
-    public function nodiacriticFilter($string)
+    public function noDiacriticFilter($string)
     {
         $chars = array(
             // Decompositions for Latin-1 Supplement
@@ -222,10 +213,5 @@ class NoDiacritic extends \Twig_Extension
         }
 
         return strtr($string, $chars);
-    }
-
-    public function getName() 
-    {
-        return 'nodiacritic';
     }
 }

@@ -27,7 +27,7 @@
 
     "autoload": {
         "psr-4": {
-            "VladRia\\Utils\\": "src/utils"
+            "VladRia\\Utils\\": "src/"
         }
     }
 }
