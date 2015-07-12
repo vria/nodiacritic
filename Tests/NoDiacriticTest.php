@@ -22,8 +22,8 @@ class NoDiacriticTest extends \PHPUnit_Framework_TestCase
 
     public function testChangeChars()
     {
-        $charsWithDiacritics    = "àçé";
-        $charsWithoutDiacritics = "ace";
+        $charsWithDiacritics    = "àâä ç éèêë ïî ôö ùûü ÿ ÀÂÄ Ç ÉÈÊË ÎÏ ÔÖ ÙÛÜ";
+        $charsWithoutDiacritics = "aaa c eeee ii oo uuu y AAA C EEEE II OO UUU";
         $this->assertEquals($charsWithoutDiacritics, $this->noDiacritic->filter($charsWithDiacritics));
     }
 }
