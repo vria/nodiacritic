@@ -9,7 +9,7 @@ Twig extention. Removes all diacritical signs from string such as accents. It ev
 composer.json
 ```yml
 "require": {
-    "vladria/nodiacritic": "dev-master"
+    "vladria/nodiacritic": "0.*"
 }
 ```
 
@@ -17,8 +17,8 @@ Include these parameters in your services.yml
 ```yml
 services:
     nodiacritic:
-        class: VladRia\Twig\Extention\NoDiacritic
-        arguments:  [@service_container]
+        class: VladRia\Utils\NoDiacritic
+        arguments: [@?request_stack]
         tags:
             - { name: twig.extension }
 ```

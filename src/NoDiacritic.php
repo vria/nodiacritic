@@ -2,18 +2,32 @@
 
 namespace VladRia\Utils;
 
-class NoDiacritic
+use Symfony\Component\HttpFoundation\RequestStack;
+
+class NoDiacritic extends \Twig_Extension
 {
     /**
-     * @var Symfony\Component\HttpFoundation\Request
+     * @var RequestStack
      */
-    protected $request = null;
+    protected $requestStack = null;
 
-    public function __construct($container = null)
+    public function __construct(RequestStack $requestStack = null)
     {
-        if (get_class($container) == "" && $container->isScopeActive('request')) {
-            $this->request = $container->get('request');
+        if (is_object($requestStack)) {
+            $this->requestStack = $requestStack;
         }
+    }
+
+    public function getFilters()
+    {
+        return array(
+            new \Twig_SimpleFilter('nodiacritic', array($this, 'filter'))
+        );
+    }
+
+    public function getName()
+    {
+        return 'vladria_nodiacritic';
     }
 
     public function filter($string)
@@ -193,8 +207,9 @@ class NoDiacritic
             // grave accent
             chr(199).chr(155) => 'U', chr(199).chr(156) => 'u',
         );
-        if ($this->request) {
-            if ( 'de' === $this->request->getLocale() ) {
+
+        if (is_object($this->requestStack) && $request = $this->requestStack->getCurrentRequest()) {
+            if ('de' === $request->getLocale()) {
                 $chars[ chr(195).chr(132) ] = 'Ae';
                 $chars[ chr(195).chr(164) ] = 'ae';
                 $chars[ chr(195).chr(150) ] = 'Oe';
@@ -202,7 +217,7 @@ class NoDiacritic
                 $chars[ chr(195).chr(156) ] = 'Ue';
                 $chars[ chr(195).chr(188) ] = 'ue';
                 $chars[ chr(195).chr(159) ] = 'ss';
-            } elseif ( 'da' === $this->request->getLocale() ) {
+            } elseif ('da' === $request->getLocale()) {
                 $chars[ chr(195).chr(134) ] = 'Ae';
                 $chars[ chr(195).chr(166) ] = 'ae';
                 $chars[ chr(195).chr(152) ] = 'Oe';
