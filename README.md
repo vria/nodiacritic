@@ -1,8 +1,10 @@
 #nodiacritic
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/a4b5fc34-3340-49f6-b593-ea9737c2ea82/mini.png)](https://insight.sensiolabs.com/projects/a4b5fc34-3340-49f6-b593-ea9737c2ea82)
+[![Build Status](https://travis-ci.org/riabchenkovlad/nodiacritic.svg?branch=master)](https://travis-ci.org/riabchenkovlad/nodiacritic)
 
-Twig extention. Removes all diacritical signs from string such as accents. It even treats specific german and danmark characters in expected way. 
+Tiny helper function that removes all diacritical signs from characters. Function is aware of German and Danish diacritic particularities.
+
 
 ##Installation
 
@@ -13,26 +15,10 @@ composer.json
 }
 ```
 
-Include these parameters in your services.yml
-```yml
-services:
-    nodiacritic:
-        class: VladRia\Utils\NoDiacritic
-        arguments: [@?request_stack]
-        tags:
-            - { name: twig.extension }
-```
-
 ##Use
 
-In a template
-```twig
-{{ "Révolution française"|nodiacritic }}
-```
-
-In a controller
 ```php
-$this->get('nodiacritic')->nodiacriticFilter('Révolution française');
+$noDiacriticString = NoDiacritic::filter("Révolution française");
 ```
 
-As expected a result would be 'Revolution francaise'.
+As expected, the result is `Révolution française`

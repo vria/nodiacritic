@@ -4,7 +4,7 @@ namespace VladRia\Utils;
 
 class NoDiacritic
 {
-    public function filter($string, $locale = null)
+    public static function filter($string, $locale = null)
     {
         $chars = array(
             // Decompositions for Latin-1 Supplement
