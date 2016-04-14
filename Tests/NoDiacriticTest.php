@@ -1,6 +1,6 @@
 <?php
 
-use VladRia\Utils\NoDiacritic;
+use VRia\Utils\NoDiacritic;
 	
 class NoDiacriticTest extends \PHPUnit_Framework_TestCase
 {

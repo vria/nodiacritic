@@ -1,6 +1,6 @@
 <?php
 
-namespace VladRia\Utils;
+namespace VRia\Utils;
 
 class NoDiacritic
 {
