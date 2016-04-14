@@ -26,4 +26,20 @@ class NoDiacriticTest extends \PHPUnit_Framework_TestCase
         $charsWithoutDiacritics = "aaa c eeee ii oo uuu y AAA C EEEE II OO UUU";
         $this->assertEquals($charsWithoutDiacritics, $this->noDiacritic->filter($charsWithDiacritics));
     }
+
+    public function testWithFrenchLocale()
+    {
+        $charsWithDiacritics    = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,./?'\"!@#$%^&*()_-+= àâäçéèêëïîôöùûüÿÀÂÄÇÉÈÊËÎÏÔÖÙÛÜ";
+        $charsWithoutDiacritics = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,./?'\"!@#$%^&*()_-+= aaaceeeeiioouuuyAAACEEEEIIOOUUU";
+
+        $this->assertEquals($charsWithoutDiacritics, $this->noDiacritic->filter($charsWithDiacritics, "fr"));
+    }
+
+    public function testWithGermanLocale()
+    {
+        $charsWithDiacritics    = "Ä A ä a Ö O ö o Ü U ü u ß s";
+        $charsWithoutDiacritics = "Ae A ae a Oe O oe o Ue U ue u ss s";
+
+        $this->assertEquals($charsWithoutDiacritics, $this->noDiacritic->filter($charsWithDiacritics, "de"));
+    }
 }

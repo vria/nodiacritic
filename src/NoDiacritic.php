@@ -2,35 +2,9 @@
 
 namespace VladRia\Utils;
 
-use Symfony\Component\HttpFoundation\RequestStack;
-
-class NoDiacritic extends \Twig_Extension
+class NoDiacritic
 {
-    /**
-     * @var RequestStack
-     */
-    protected $requestStack = null;
-
-    public function __construct(RequestStack $requestStack = null)
-    {
-        if (is_object($requestStack)) {
-            $this->requestStack = $requestStack;
-        }
-    }
-
-    public function getFilters()
-    {
-        return array(
-            new \Twig_SimpleFilter('nodiacritic', array($this, 'filter'))
-        );
-    }
-
-    public function getName()
-    {
-        return 'vladria_nodiacritic';
-    }
-
-    public function filter($string)
+    public function filter($string, $locale = null)
     {
         $chars = array(
             // Decompositions for Latin-1 Supplement
@@ -208,23 +182,21 @@ class NoDiacritic extends \Twig_Extension
             chr(199).chr(155) => 'U', chr(199).chr(156) => 'u',
         );
 
-        if (is_object($this->requestStack) && $request = $this->requestStack->getCurrentRequest()) {
-            if ('de' === $request->getLocale()) {
-                $chars[ chr(195).chr(132) ] = 'Ae';
-                $chars[ chr(195).chr(164) ] = 'ae';
-                $chars[ chr(195).chr(150) ] = 'Oe';
-                $chars[ chr(195).chr(182) ] = 'oe';
-                $chars[ chr(195).chr(156) ] = 'Ue';
-                $chars[ chr(195).chr(188) ] = 'ue';
-                $chars[ chr(195).chr(159) ] = 'ss';
-            } elseif ('da' === $request->getLocale()) {
-                $chars[ chr(195).chr(134) ] = 'Ae';
-                $chars[ chr(195).chr(166) ] = 'ae';
-                $chars[ chr(195).chr(152) ] = 'Oe';
-                $chars[ chr(195).chr(184) ] = 'oe';
-                $chars[ chr(195).chr(133) ] = 'Aa';
-                $chars[ chr(195).chr(165) ] = 'aa';
-            }
+        if ('de' === $locale) {
+            $chars[ chr(195).chr(132) ] = 'Ae';
+            $chars[ chr(195).chr(164) ] = 'ae';
+            $chars[ chr(195).chr(150) ] = 'Oe';
+            $chars[ chr(195).chr(182) ] = 'oe';
+            $chars[ chr(195).chr(156) ] = 'Ue';
+            $chars[ chr(195).chr(188) ] = 'ue';
+            $chars[ chr(195).chr(159) ] = 'ss';
+        } elseif ('da' === $locale) {
+            $chars[ chr(195).chr(134) ] = 'Ae';
+            $chars[ chr(195).chr(166) ] = 'ae';
+            $chars[ chr(195).chr(152) ] = 'Oe';
+            $chars[ chr(195).chr(184) ] = 'oe';
+            $chars[ chr(195).chr(133) ] = 'Aa';
+            $chars[ chr(195).chr(165) ] = 'aa';
         }
 
         return strtr($string, $chars);
