@@ -11,7 +11,7 @@ Tiny helper function that removes all diacritical signs from characters. Functio
 composer.json
 ```yml
 "require": {
-    "vladria/nodiacritic": "0.*"
+    "vria/nodiacritic": "0.*"
 }
 ```
 
