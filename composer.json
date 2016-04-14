@@ -1,6 +1,6 @@
 {
     "name": "vladria/nodiacritic",
-    "type": "package",
+    "type": "library",
     "description": "Twig extention used in Symfony2 for eliminating diacritical signs such as accents",
     "keywords": ["twig", "filter", "string", "text", "diacritical", "accent"],
     "homepage": "https://github.com/riabchenkovlad/nodiacritic",
@@ -10,7 +10,7 @@
             "name": "Riabchenko Vlad",
             "email": "Riabchenko.Vlad@gmail.com",
 			"role": "Developer",
-			"homepage": "https://www.linkedin.com/pub/vladyslav-riabchenko/49/a95/97b"
+			"homepage": "http://vria.eu"
         }
     ],
 	"support": {
