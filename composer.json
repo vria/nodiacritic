@@ -8,13 +8,12 @@
     "authors": [
         {
             "name": "Riabchenko Vlad",
-            "email": "Riabchenko.Vlad@gmail.com",
-			"role": "Developer",
+            "email": "contact@vria.eu",
 			"homepage": "http://vria.eu"
         }
     ],
 	"support": {
-		"email": "Riabchenko.Vlad@gmail.com",
+		"email": "contact@vria.eu",
 		"issues": "https://github.com/riabchenkovlad/nodiacritic/issues"
 	},
     "require": {

@@ -4,32 +4,39 @@ use VRia\Utils\NoDiacritic;
 	
 class NoDiacriticTest extends \PHPUnit_Framework_TestCase
 {
-    public function testDoNotReplaceChars()
+    const NO_DIACRITIC = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,./?'\"!@#$%^&*()_-+=абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+    const DIACRITIC = "àâçéèêëîïœôùûÀÂÇÈÉÊËÎÏŒáéíñóúüÁÉÍÑÓÚÜÔÙÛàèìòùÀÈÌÒÙãÃçÇòÒóÓõÕäåæðëöøßþüÿÄÅÆÐËÖØÞÜ";
+
+    public function testDoNotReplaceCharsDefaultLocale()
     {
-        $chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,./?'\"!@#$%^&*()_-+=";
-        $this->assertEquals($chars, NoDiacritic::filter($chars));
+        $this->assertEquals(self::NO_DIACRITIC, NoDiacritic::filter(self::NO_DIACRITIC));
     }
 
-    public function testChangeChars()
+    public function testDoNotReplaceCharsGermanLocale()
     {
-        $charsWithDiacritics    = "àâä ç éèêë ïî ôö ùûü ÿ ÀÂÄ Ç ÉÈÊË ÎÏ ÔÖ ÙÛÜ";
-        $charsWithoutDiacritics = "aaa c eeee ii oo uuu y AAA C EEEE II OO UUU";
-        $this->assertEquals($charsWithoutDiacritics, NoDiacritic::filter($charsWithDiacritics));
+        $this->assertEquals(self::NO_DIACRITIC, NoDiacritic::filter(self::NO_DIACRITIC, 'de'));
     }
 
-    public function testWithFrenchLocale()
+    public function testDoNotReplaceCharsDanishLocale()
     {
-        $charsWithDiacritics    = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,./?'\"!@#$%^&*()_-+= àâäçéèêëïîôöùûüÿÀÂÄÇÉÈÊËÎÏÔÖÙÛÜ";
-        $charsWithoutDiacritics = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,./?'\"!@#$%^&*()_-+= aaaceeeeiioouuuyAAACEEEEIIOOUUU";
-
-        $this->assertEquals($charsWithoutDiacritics, NoDiacritic::filter($charsWithDiacritics, "fr"));
+        $this->assertEquals(self::NO_DIACRITIC, NoDiacritic::filter(self::NO_DIACRITIC, 'da'));
     }
 
-    public function testWithGermanLocale()
+    public function testDefaultLocale()
     {
-        $charsWithDiacritics    = "Ä A ä a Ö O ö o Ü U ü u ß s";
-        $charsWithoutDiacritics = "Ae A ae a Oe O oe o Ue U ue u ss s";
+        $this->assertEquals("aaceeeeiioeouuAACEEEEIIOEaeinouuAEINOUUOUUaeiouAEIOUaAcCoOoOoOaaaedeoosthuyAAAEDEOOTHU",
+            NoDiacritic::filter(self::DIACRITIC));
+    }
 
-        $this->assertEquals($charsWithoutDiacritics, NoDiacritic::filter($charsWithDiacritics, "de"));
+    public function testGermanLocale()
+    {
+        $this->assertEquals("aaceeeeiioeouuAACEEEEIIOEaeinouueAEINOUUeOUUaeiouAEIOUaAcCoOoOoOaeaaedeoeossthueyAeAAEDEOeOTHUe",
+            NoDiacritic::filter(self::DIACRITIC, "de"));
+    }
+
+    public function testDanishLocale()
+    {
+        $this->assertEquals("aaceeeeiioeouuAACEEEEIIOEaeinouuAEINOUUOUUaeiouAEIOUaAcCoOoOoOaaaaedeooesthuyAAaAeDEOOeTHU",
+            NoDiacritic::filter(self::DIACRITIC, "da"));
     }
 }
