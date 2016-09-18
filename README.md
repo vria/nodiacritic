@@ -1,6 +1,7 @@
 #nodiacritic
 
 [![Build Status](https://travis-ci.org/vria/nodiacritic.svg?branch=master)](https://travis-ci.org/vria/nodiacritic)
+[![Total Downloads](https://poser.pugx.org/vria/nodiacritic/downloads)](https://packagist.org/packages/vria/nodiacritic)
 
 Tiny helper function that removes all diacritical signs from characters. Function is aware of German and Danish diacritic particularities.
 
