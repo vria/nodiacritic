@@ -21,7 +21,7 @@ composer.json
 $noDiacriticString = NoDiacritic::filter("Révolution française");
 ```
 
-As expected, the result is `Révolution française`.
+As expected, the result is `Revolution francaise`.
 
 The library is aware of particularities in German and Danish language:
 
