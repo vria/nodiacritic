@@ -36,5 +36,3 @@ $noAccentsNiceStreet = NoDiacritic::filter("Schöne straße", "de");
 The result is `Schoene strasse`.
 
 The code is inspired by WordPress' `remove_accents` function.
-
-You can find the article about the library in [my blog](https://vria.eu/news/2016/4/24/library-and-symfony-bundle-to-remove-diacritic-signs-form-strings).
